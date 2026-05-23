@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ── COLORS ── */
+  --color-bg:          #0e0c0b;
+  --color-bg2:         #161310;
+  --color-bg3:         #1f1a16;
+  --color-surface:     #26201a;
+  --color-border:      #332a22;
+  --color-border2:     #4a3c30;
+
+  --color-moss:        #5a6e3f;
+  --color-moss-lt:     #7a9455;
+  --color-moss-dim:    #3d4d2b;
+
+  --color-coffee:      #8b6043;
+  --color-coffee-lt:   #b5845e;
+  --color-coffee-dim:  #5c3e2a;
+
+  --color-sand:        #c9a97a;
+  --color-sand-lt:     #e0c9a6;
+  --color-cream:       #f0e6d3;
+
+  --color-text:        #ede5d8;
+  --color-text2:       #a89880;
+  --color-text3:       #6b5a48;
+
+  /* ── FONTS ── */
+  --font-display: var(--font-fraunces);
+  --font-body:    var(--font-instrument);
+  --font-mono:    var(--font-dm-mono);
+
+  /* ── ANIMATION ── */
+  --animate-fade-up:     fadeUp 0.7s ease forwards;
+  --animate-fade-in:     fadeIn 0.7s ease forwards;
+  --animate-blink:       blink 1s step-end infinite;
+  --animate-pulse-dot:   pulseDot 2s ease infinite;
+  --animate-scroll-line: scrollLine 2s ease infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── KEYFRAMES ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.4); }
+}
+@keyframes scrollLine {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+  50%       { opacity: 1;   transform: scaleY(1); }
+}
+
+/* ── BASE ── */
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  ::-webkit-scrollbar       { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--color-border2); border-radius: 3px; }
+
+  ::selection {
+    background: var(--color-moss-dim);
+    color: var(--color-cream);
+  }
+
+  @media (max-width: 768px) {
+    body, * { cursor: auto !important; }
+  }
 }
