@@ -35,7 +35,7 @@ export function ProjectsSection() {
                 target={project.url !== "#" ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 className={cn(
-                  "project-card group block border-b border-border px-1 py-8",
+                  "project-card group block border-b border-border px-4 py-8",
                   i % 2 === 0 ? "md:border-r" : "",
                   project.url === "#" ? "cursor-default" : "cursor-none"
                 )}

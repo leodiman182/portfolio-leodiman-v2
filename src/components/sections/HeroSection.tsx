@@ -62,7 +62,7 @@ export function HeroSection() {
         }`}
       >
         {/* Eyebrow */}
-        <div className="inline-block font-mono text-xs tracking-[0.25em] uppercase text-black bg-moss-lt px-12 py-1 rounded-sm mb-12 opacity-80 w-1/2">
+        <div className="inline-block font-mono text-sm tracking-[0.25em] uppercase text-black bg-moss-lt px-4 py-2 rounded-sm mb-6 opacity-80">
           Hello, I&apos;m
         </div>
 
