@@ -158,7 +158,9 @@ export default function CampfireScene() {
     tentShape.lineTo(tCX - 0.04,  GROUND + tH);
     tentShape.lineTo(tCX + tHalf, GROUND);
     tentShape.closePath();
-    scene.add(new THREE.Mesh(new THREE.ShapeGeometry(tentShape), tentMat));
+    const tentMesh = new THREE.Mesh(new THREE.ShapeGeometry(tentShape), tentMat);
+    tentMesh.position.z = 0.4;
+    scene.add(tentMesh);
 
     // Door — right face, opening toward campfire
     const doorShape = new THREE.Shape();
@@ -166,10 +168,12 @@ export default function CampfireScene() {
     doorShape.lineTo(tCX + 0.25, GROUND + 0.36);
     doorShape.lineTo(tCX + 0.50, GROUND);
     doorShape.closePath();
-    scene.add(new THREE.Mesh(
+    const doorMesh = new THREE.Mesh(
       new THREE.ShapeGeometry(doorShape),
       new THREE.MeshBasicMaterial({ color: 0x181008 })
-    ));
+    );
+    doorMesh.position.z = 0.41;
+    scene.add(doorMesh);
 
     // ── CAMPFIRE LOGS ─────────────────────────────────────────────────────────
     // Fire moved to the right side of the clearing

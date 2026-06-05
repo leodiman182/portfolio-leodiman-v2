@@ -32,58 +32,61 @@ export function ContactSection() {
           <SectionEyebrow label="05 / Contact" />
         </Reveal>
 
-        <div className="mt-8 max-w-2xl">
-          <Reveal>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-cream leading-tight mb-6">
-              Let&apos;s build<br />
-              <span className="italic text-sand">something great.</span>
-            </h2>
-          </Reveal>
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left — text content */}
+          <div>
+            <Reveal>
+              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-cream leading-tight mb-6">
+                Let&apos;s build<br />
+                <span className="italic text-sand">something great.</span>
+              </h2>
+            </Reveal>
 
-          <Reveal delay={0.1}>
-            <p className="text-text2 text-[0.95rem] leading-7 mb-10">
-              I&apos;m actively looking for international remote opportunities.
-              If you&apos;re working on something meaningful and need a frontend
-              engineer who cares about craft — let&apos;s talk.
-            </p>
-          </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-text2 text-[0.95rem] leading-7 mb-10">
+                I&apos;m actively looking for international remote opportunities.
+                If you&apos;re working on something meaningful and need a frontend
+                engineer who cares about craft — let&apos;s talk.
+              </p>
+            </Reveal>
 
-          <Reveal delay={0.2}>
-            <div className="flex flex-wrap gap-4 mb-12">
-              <Button href={`mailto:${personalInfo.email}`}>
-                {personalInfo.email}
-              </Button>
-              <Button
-                variant="secondary"
-                href={`https://wa.me/${personalInfo.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp
-              </Button>
-            </div>
-          </Reveal>
-
-          {/* Socials */}
-          <Reveal delay={0.3}>
-            <div className="flex items-center gap-6">
-              {socials.map(({ label, href, icon }) => (
-                <a
-                  key={label}
-                  href={href}
+            <Reveal delay={0.2}>
+              <div className="flex flex-wrap gap-4 mb-12">
+                <Button href={`mailto:${personalInfo.email}`}>
+                  {personalInfo.email}
+                </Button>
+                <Button
+                  variant="secondary"
+                  href={`https://wa.me/${personalInfo.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={label}
-                  className="text-text3 hover:text-sand transition-colors duration-200"
                 >
-                  {icon}
-                </a>
-              ))}
-              <span className="font-mono text-[0.7rem] text-text3 tracking-wider">
-                @leodiman182
-              </span>
-            </div>
-          </Reveal>
+                  WhatsApp
+                </Button>
+              </div>
+            </Reveal>
+
+            {/* Socials */}
+            <Reveal delay={0.3}>
+              <div className="flex items-center gap-6">
+                {socials.map(({ label, href, icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="text-text3 hover:text-sand transition-colors duration-200"
+                  >
+                    {icon}
+                  </a>
+                ))}
+                <span className="font-mono text-[0.7rem] text-text3 tracking-wider">
+                  @leodiman182
+                </span>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
 

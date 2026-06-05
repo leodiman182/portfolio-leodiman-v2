@@ -71,6 +71,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body
         className={`${fraunces.variable} ${dmMono.variable} ${instrumentSans.variable} antialiased`}
+        suppressHydrationWarning
       >
         <CustomCursor />
         <ScrollProgress />
