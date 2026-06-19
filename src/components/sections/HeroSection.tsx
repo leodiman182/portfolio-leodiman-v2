@@ -108,17 +108,6 @@ export function HeroSection() {
           </Button>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-        {/* <span className="font-mono text-[0.62rem] tracking-[0.2em] uppercase text-text2">
-          Scroll
-        </span> */}
-        <div
-          className="h-10 w-px animate-scroll-line"
-          style={{ background: "var(--color-border2)" }}
-        />
-      </div>
     </section>
   );
 }

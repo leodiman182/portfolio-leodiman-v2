@@ -1,8 +1,6 @@
-import OpenAI from "openai";
+import { pipeline, type FeatureExtractionPipeline } from "@xenova/transformers";
 import fs from "fs";
 import path from "path";
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -47,13 +45,27 @@ function splitIntoChunks(text: string, maxTokens = 400, overlapLines = 3): strin
 }
 
 // ─── Embedding ────────────────────────────────────────────────────────────────
+// Runs locally (no API calls, no cost) via a small ONNX model.
+
+let extractor: FeatureExtractionPipeline | null = null;
+
+async function getExtractor(): Promise<FeatureExtractionPipeline> {
+  if (!extractor) {
+    extractor = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2");
+  }
+  return extractor;
+}
 
 async function embed(texts: string[]): Promise<number[][]> {
-  const response = await openai.embeddings.create({
-    model: "text-embedding-3-small",
-    input: texts,
-  });
-  return response.data.map((d) => d.embedding);
+  const model = await getExtractor();
+  const embeddings: number[][] = [];
+
+  for (const text of texts) {
+    const output = await model(text, { pooling: "mean", normalize: true });
+    embeddings.push(Array.from(output.data as Float32Array));
+  }
+
+  return embeddings;
 }
 
 // ─── Cosine similarity ────────────────────────────────────────────────────────

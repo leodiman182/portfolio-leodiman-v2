@@ -4,6 +4,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const getTextContent = (m: UIMessage) =>
@@ -43,8 +44,8 @@ function MessageBubble({ role, content }: BubbleProps) {
       className={cn("flex w-full", isUser ? "justify-end" : "justify-start")}
     >
       {!isUser && (
-        <div className="mr-2 mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xs">
-          L
+        <div className="mr-2 mt-1 h-7 w-7 shrink-0 overflow-hidden rounded-full border border-white/10">
+          <Image src="/portrait.png" alt="Leo" width={28} height={28} className="h-full w-full object-cover" />
         </div>
       )}
       <div
@@ -66,8 +67,8 @@ function MessageBubble({ role, content }: BubbleProps) {
 function TypingIndicator() {
   return (
     <div className="flex items-center gap-2">
-      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xs">
-        L
+      <div className="h-7 w-7 shrink-0 overflow-hidden rounded-full border border-white/10">
+        <Image src="/portrait.png" alt="Leo" width={28} height={28} className="h-full w-full object-cover" />
       </div>
       <div className="flex gap-1 rounded-2xl rounded-tl-sm border border-white/10 bg-white/5 px-4 py-3">
         {[0, 1, 2].map((i) => (
@@ -97,7 +98,7 @@ export function ChatSection() {
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [messages, isLoading]);
 
   function handleSuggestion(text: string) {
@@ -117,7 +118,7 @@ export function ChatSection() {
   return (
     <section
       id="chat"
-      className="relative mx-auto flex min-h-screen w-full max-w-2xl flex-col justify-center px-4 py-24"
+      className="relative mx-auto flex min-h-screen w-full max-w-2xl flex-col justify-center px-4 py-8"
     >
       {/* Header */}
       <motion.div
@@ -137,7 +138,7 @@ export function ChatSection() {
       {/* Chat window */}
       <div className="flex flex-col gap-4 rounded-2xl border border-white/8 bg-white/3 p-5">
         {/* Messages */}
-        <div className="flex min-h-60 flex-col gap-3 overflow-y-auto">
+        <div className="flex h-[24rem] flex-col gap-3 overflow-y-auto">
           <AnimatePresence initial={false}>
             {!started && messages.length === 0 && (
               <motion.div

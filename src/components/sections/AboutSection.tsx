@@ -5,7 +5,7 @@ import { Reveal, SectionEyebrow } from "@/components/ui";
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-32 px-6">
+    <section id="about" className="pb-32 x-6">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionEyebrow label="01 / About" />
