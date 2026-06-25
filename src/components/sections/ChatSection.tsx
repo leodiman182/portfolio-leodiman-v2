@@ -18,13 +18,9 @@ const getTextContent = (m: UIMessage) =>
 const SUGGESTIONS = [
   "What's your current tech stack?",
   "Tell me about your most challenging project",
-  "How do you handle legacy code migrations?",
   "Are you open to relocation?",
-  "What kind of team environment do you thrive in?",
-  "Do you have experience with design systems?",
+  "Do you have experience with Redux?",
 ];
-
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 interface BubbleProps {
   role: "user" | "assistant";
@@ -61,8 +57,6 @@ function MessageBubble({ role, content }: BubbleProps) {
     </motion.div>
   );
 }
-
-// ─── Typing indicator ─────────────────────────────────────────────────────────
 
 function TypingIndicator() {
   return (
@@ -136,9 +130,9 @@ export function ChatSection() {
       </motion.div>
 
       {/* Chat window */}
-      <div className="flex flex-col gap-4 rounded-2xl border border-white/8 bg-white/3 p-5">
+      <div className="flex flex-col gap-4 rounded-2xl border border-white/8 bg-white/3 p-2">
         {/* Messages */}
-        <div className="flex h-[24rem] flex-col gap-3 overflow-y-auto">
+        <div className="flex h-48 flex-col gap-3 overflow-y-auto">
           <AnimatePresence initial={false}>
             {!started && messages.length === 0 && (
               <motion.div
@@ -146,7 +140,7 @@ export function ChatSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex h-full flex-col items-center justify-center gap-3 py-6"
+                className="flex flex-col items-center justify-center gap-3 py-6"
               >
                 <p className="text-sm text-white/30">Try asking something:</p>
                 <div className="flex flex-wrap justify-center gap-2">

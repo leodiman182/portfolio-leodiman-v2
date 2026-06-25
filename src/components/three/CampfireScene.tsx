@@ -149,7 +149,7 @@ export default function CampfireScene() {
 
     // ── TENT SILHOUETTE ───────────────────────────────────────────────────────
     // Tent close to the fire (on the left), door facing right toward the flames
-    const tCX = 0.50;
+    const tCX = -0.45;
     const tHalf = 0.62;
     const tH = 0.80;
 
@@ -177,7 +177,7 @@ export default function CampfireScene() {
 
     // ── CAMPFIRE LOGS ─────────────────────────────────────────────────────────
     // Fire moved to the right side of the clearing
-    const fireX = 1.80;
+    const fireX = 0.85;
 
     // Logs at z=1.2 (same depth as fire particles) to avoid perspective offset
     const logMat = new THREE.MeshBasicMaterial({ color: 0x1c1008 });
@@ -361,5 +361,9 @@ export default function CampfireScene() {
     };
   }, []);
 
-  return <div ref={mountRef} className="absolute inset-0" />;
+  return (
+    <div className="absolute inset-0">
+      <div ref={mountRef} className="absolute inset-0" />
+    </div>
+  );
 }

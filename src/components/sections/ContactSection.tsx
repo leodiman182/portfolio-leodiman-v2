@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { personalInfo } from "@/data";
 import { Button, Reveal, SectionEyebrow } from "@/components/ui";
 
@@ -25,6 +27,14 @@ const socials = [
 ];
 
 export function ContactSection() {
+  const [copied, setCopied] = useState(false);
+
+  async function copyEmail() {
+    await navigator.clipboard.writeText(personalInfo.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
   return (
     <section id="contact" className="py-32 px-6 border-t border-border bg-bg2">
       <div className="mx-auto max-w-6xl">
@@ -51,10 +61,32 @@ export function ContactSection() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <div className="flex flex-wrap gap-4 mb-12">
-                <Button href={`mailto:${personalInfo.email}`}>
-                  {personalInfo.email}
-                </Button>
+              <div className="flex flex-wrap items-center gap-4 mb-12">
+                <div className="flex items-center gap-2">
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="cursor-none font-mono text-sm sm:text-base text-cream hover:text-sand transition-colors duration-200"
+                  >
+                    {personalInfo.email}
+                  </a>
+                  <button
+                    type="button"
+                    onClick={copyEmail}
+                    aria-label="Copy email"
+                    className="cursor-none flex h-8 w-8 shrink-0 items-center justify-center rounded-sm border border-border-2 text-text-2 transition-colors duration-200 hover:border-sand hover:text-sand"
+                  >
+                    {copied ? (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                        <rect x="9" y="9" width="13" height="13" rx="2" />
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
                 <Button
                   variant="secondary"
                   href={`https://wa.me/${personalInfo.whatsapp}`}
@@ -99,6 +131,21 @@ export function ContactSection() {
           Built with Next.js · Three.js · Tailwind CSS
         </span>
       </div>
+
+      {/* Copy toast */}
+      <AnimatePresence>
+        {copied && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2 rounded-sm border border-sand bg-bg2 px-5 py-3 font-mono text-xs tracking-widest uppercase text-cream shadow-lg"
+          >
+            Email copied to clipboard
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

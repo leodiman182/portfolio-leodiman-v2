@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -65,9 +66,12 @@ export function Navbar() {
           <a
             href="#hero"
             onClick={(e) => { e.preventDefault(); handleLink("#hero"); }}
-            className="font-mono text-sm tracking-[0.15em] uppercase text-sand hover:text-cream transition-colors duration-200"
+            className="flex items-center gap-2 font-mono text-sm tracking-[0.15em] uppercase text-sand hover:text-cream transition-colors duration-200"
           >
-            LDM
+            <Image src="/icon.svg" alt="" width={20} height={20} className="h-5 w-5" />
+            <h1 className="mt-1.5">
+              LDM
+            </h1>
           </a>
 
           {/* Desktop nav */}
@@ -92,12 +96,30 @@ export function Navbar() {
           {/* Mobile hamburger */}
           <button
             aria-label="Toggle menu"
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
+            className="md:hidden relative flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-300 hover:bg-text2/10 active:scale-95"
           >
-            <span className={cn("block h-px w-6 bg-text2 transition-all duration-300", open && "translate-y-2 rotate-45")} />
-            <span className={cn("block h-px w-6 bg-text2 transition-all duration-300", open && "opacity-0")} />
-            <span className={cn("block h-px w-6 bg-text2 transition-all duration-300", open && "-translate-y-2 -rotate-45")} />
+            <span className="relative flex h-4 w-5 flex-col items-center justify-between">
+              <span
+                className={cn(
+                  "block h-[1.5px] w-full origin-center rounded-full bg-text2 transition-all duration-300 ease-[cubic-bezier(.65,0,.35,1)]",
+                  open ? "translate-y-1.75 rotate-45 bg-sand" : ""
+                )}
+              />
+              <span
+                className={cn(
+                  "block h-[1.5px] w-full rounded-full bg-text2 transition-all duration-200",
+                  open ? "scale-x-0 opacity-0" : "scale-x-100 opacity-100"
+                )}
+              />
+              <span
+                className={cn(
+                  "block h-[1.5px] w-full origin-center rounded-full bg-text2 transition-all duration-300 ease-[cubic-bezier(.65,0,.35,1)]",
+                  open ? "-translate-y-1.75 -rotate-45 bg-sand" : ""
+                )}
+              />
+            </span>
           </button>
         </div>
       </header>

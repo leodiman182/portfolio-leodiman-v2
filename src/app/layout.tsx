@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, DM_Mono, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
@@ -60,6 +60,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0e0c0b",
 };
 
 export default function RootLayout({

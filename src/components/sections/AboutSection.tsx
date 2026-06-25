@@ -5,7 +5,7 @@ import { Reveal, SectionEyebrow } from "@/components/ui";
 
 export function AboutSection() {
   return (
-    <section id="about" className="pb-32 x-6">
+    <section id="about" className="pb-32 px-6">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionEyebrow label="01 / About" />
@@ -34,12 +34,12 @@ export function AboutSection() {
               <div className="flex flex-wrap gap-4 pt-2">
                 <div className="flex items-center gap-2 font-mono text-xs text-text2 tracking-wider">
                   <span
-                    className="w-1.5 h-1.5 rounded-full bg-moss-lt animate-[pulseDot_2s_ease_infinite]"
+                    className="w-1.5 h-1.5 rounded-full bg-moss-lt animate-pulse-dot"
                   />
                   {personalInfo.location}
                 </div>
                 <div className="flex items-center gap-2 font-mono text-xs text-moss-lt tracking-wider">
-                  <span className="w-1.5 h-1.5 rounded-full bg-moss-lt animate-[pulseDot_2s_ease_infinite]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-moss-lt animate-pulse-dot" />
                   Open to Remote
                 </div>
               </div>
@@ -79,7 +79,7 @@ export function AboutSection() {
                 <ul className="space-y-2">
                   {hobbies.map((h) => (
                     <li key={h} className="flex items-start gap-3 text-text2 text-sm leading-6">
-                      <span className="mt-2 w-1 h-1 rounded-full bg-coffee-lt flex-shrink-0" />
+                      <span className="mt-2 w-1 h-1 rounded-full bg-coffee-lt shrink-0" />
                       {h}
                     </li>
                   ))}
