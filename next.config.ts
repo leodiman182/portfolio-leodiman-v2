@@ -1,9 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
   images: {
     unoptimized: true,
+  },
+  outputFileTracingIncludes: {
+    "/api/chat": ["./src/data/knowledge/**/*"],
   },
 };
 
