@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/generate-knowledge.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -35,6 +34,5 @@
     "playwright": "^1.60.0",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "prebuild": "node scripts/generate-knowledge.mjs"
+  }
 }

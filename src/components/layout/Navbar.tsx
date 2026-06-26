@@ -100,25 +100,27 @@ export function Navbar() {
             onClick={() => setOpen((o) => !o)}
             className="md:hidden relative flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-300 hover:bg-text2/10 active:scale-95"
           >
-            <span className="relative flex h-4 w-5 flex-col items-center justify-between">
-              <span
-                className={cn(
-                  "block h-[1.5px] w-full origin-center rounded-full bg-text2 transition-all duration-300 ease-[cubic-bezier(.65,0,.35,1)]",
-                  open ? "translate-y-1.75 rotate-45 bg-sand" : ""
-                )}
-              />
-              <span
-                className={cn(
-                  "block h-[1.5px] w-full rounded-full bg-text2 transition-all duration-200",
-                  open ? "scale-x-0 opacity-0" : "scale-x-100 opacity-100"
-                )}
-              />
-              <span
-                className={cn(
-                  "block h-[1.5px] w-full origin-center rounded-full bg-text2 transition-all duration-300 ease-[cubic-bezier(.65,0,.35,1)]",
-                  open ? "-translate-y-1.75 -rotate-45 bg-sand" : ""
-                )}
-              />
+            {/* Hamburger icon */}
+            <span
+              className={cn(
+                "absolute flex h-4 w-5 flex-col items-center justify-between transition-all duration-300 ease-[cubic-bezier(.65,0,.35,1)]",
+                open ? "opacity-0 scale-50 rotate-45" : "opacity-100 scale-100 rotate-0"
+              )}
+            >
+              <span className="block h-[1.5px] w-full rounded-full bg-text2" />
+              <span className="block h-[1.5px] w-full rounded-full bg-text2" />
+              <span className="block h-[1.5px] w-full rounded-full bg-text2" />
+            </span>
+
+            {/* X icon */}
+            <span
+              className={cn(
+                "absolute flex h-5 w-5 items-center justify-center transition-all duration-300 ease-[cubic-bezier(.65,0,.35,1)]",
+                open ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-50 -rotate-45"
+              )}
+            >
+              <span className="absolute h-[1.5px] w-5 rounded-full bg-sand rotate-45" />
+              <span className="absolute h-[1.5px] w-5 rounded-full bg-sand -rotate-45" />
             </span>
           </button>
         </div>
