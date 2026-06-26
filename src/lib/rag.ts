@@ -1,6 +1,10 @@
-import { pipeline, type FeatureExtractionPipeline } from "@xenova/transformers";
+import { env, pipeline, type FeatureExtractionPipeline } from "@xenova/transformers";
 import fs from "fs";
 import path from "path";
+
+// Vercel serverless functions have a read-only filesystem except /tmp,
+// but @xenova/transformers defaults to caching models inside node_modules.
+env.cacheDir = "/tmp/transformers-cache";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
