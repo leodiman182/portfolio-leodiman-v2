@@ -112,7 +112,7 @@ export function ChatSection() {
   return (
     <section
       id="chat"
-      className="relative mx-auto flex min-h-screen w-full max-w-2xl flex-col justify-center px-4 py-8"
+      className="relative mx-auto flex min-h-1/2 w-full max-w-2xl flex-col justify-center px-4 py-8"
     >
       {/* Header */}
       <motion.div
@@ -132,7 +132,7 @@ export function ChatSection() {
       {/* Chat window */}
       <div className="flex flex-col gap-4 rounded-2xl border border-white/8 bg-white/3 p-2">
         {/* Messages */}
-        <div className="flex h-48 flex-col gap-3 overflow-y-auto">
+        <div className="flex h-64 flex-col gap-3 overflow-y-auto">
           <AnimatePresence initial={false}>
             {!started && messages.length === 0 && (
               <motion.div
