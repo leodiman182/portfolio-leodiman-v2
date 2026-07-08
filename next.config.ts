@@ -5,7 +5,10 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   outputFileTracingIncludes: {
-    "/api/chat": ["./src/data/knowledge/**/*"],
+    "/api/chat": [
+      "./src/data/knowledge/**/*",
+      "./node_modules/onnxruntime-node/bin/napi-v3/linux/**/*",
+    ],
   },
 };
 
