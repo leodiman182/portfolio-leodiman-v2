@@ -44,6 +44,17 @@ export function AboutSection() {
                 </div>
               </div>
             </Reveal>
+
+            <Reveal delay={0.35}>
+              <a
+                href="https://portfolio-leodiman.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-none inline-block font-mono text-[0.7rem] text-text3 tracking-wider hover:text-sand transition-colors duration-200 text-2xl"
+              >
+                This is v2 — see where I started ↗
+              </a>
+            </Reveal>
           </div>
 
           {/* Side column */}

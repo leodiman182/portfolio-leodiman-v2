@@ -148,7 +148,7 @@ export function ChatSection() {
                     <button
                       key={s}
                       onClick={() => handleSuggestion(s)}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/60 transition hover:border-white/20 hover:text-white/90"
+                      className="cursor-none rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/60 transition hover:border-white/20 hover:text-white/90"
                     >
                       {s}
                     </button>
@@ -189,7 +189,7 @@ export function ChatSection() {
             className={cn(
               "flex h-8 w-8 items-center justify-center rounded-full transition",
               input.trim() && !isLoading
-                ? "bg-white text-black hover:bg-white/90"
+                ? "cursor-none bg-white text-black hover:bg-white/90"
                 : "cursor-not-allowed border border-white/10 text-white/20"
             )}
             aria-label="Send message"

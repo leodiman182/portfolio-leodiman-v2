@@ -66,7 +66,7 @@ export function Navbar() {
           <a
             href="#hero"
             onClick={(e) => { e.preventDefault(); handleLink("#hero"); }}
-            className="flex items-center gap-2 font-mono text-sm tracking-[0.15em] uppercase text-sand hover:text-cream transition-colors duration-200"
+            className="cursor-none flex items-center gap-2 font-mono text-sm tracking-[0.15em] uppercase text-sand hover:text-cream transition-colors duration-200"
           >
             <Image src="/icon.svg" alt="" width={20} height={20} className="h-5 w-5" />
             <h1 className="mt-1.5">
@@ -82,7 +82,7 @@ export function Navbar() {
                 href={href}
                 onClick={(e) => { e.preventDefault(); handleLink(href); }}
                 className={cn(
-                  "font-mono text-[0.72rem] tracking-widest uppercase transition-colors duration-200",
+                  "cursor-none font-mono text-[0.72rem] tracking-widest uppercase transition-colors duration-200",
                   active === href.slice(1)
                     ? "text-sand"
                     : "text-text2 hover:text-text"

@@ -108,7 +108,7 @@ export function ContactSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="text-text3 hover:text-sand transition-colors duration-200"
+                    className="cursor-none text-text3 hover:text-sand transition-colors duration-200"
                   >
                     {icon}
                   </a>
